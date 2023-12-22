@@ -143,35 +143,61 @@ const snled27351_led_t PROGMEM g_snled27351_leds[RGB_MATRIX_LED_COUNT] = {
 
 // clang-format on
 bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
-    if (!rgb_matrix_indicators_advanced_user(led_min, led_max)) {
-        return false;
+    if (get_highest_layer(layer_state) == 1) {
+        for (uint8_t i = 0; i <= 8; i++){
+            RGB_MATRIX_INDICATOR_SET_COLOR(i, 30, 6, 155);
+        }
+        RGB_MATRIX_INDICATOR_SET_COLOR(25, 30, 6, 155);
+        RGB_MATRIX_INDICATOR_SET_COLOR(26, 30, 6, 155);
+        RGB_MATRIX_INDICATOR_SET_COLOR(42, 30, 6, 155);
+        RGB_MATRIX_INDICATOR_SET_COLOR(57, 30, 6, 155);
+        RGB_MATRIX_INDICATOR_SET_COLOR(72, 30, 6, 155);
+        RGB_MATRIX_INDICATOR_SET_COLOR(81, 30, 6, 155);
+        RGB_MATRIX_INDICATOR_SET_COLOR(82, 30, 6, 155);
+        RGB_MATRIX_INDICATOR_SET_COLOR(83, 30, 6, 155);
     }
+    if (get_highest_layer(layer_state) > 1) {
+        for (uint8_t i = led_min; i < led_max; i++) {
+            RGB_MATRIX_INDICATOR_SET_COLOR(i, 0, 0, 0);
+        }
 
+        if (get_highest_layer(layer_state) > 2) {
+            RGB_MATRIX_INDICATOR_SET_COLOR(0, 255, 0, 0);
+        } else {
+            RGB_MATRIX_INDICATOR_SET_COLOR(0, 30, 6, 155);
+        }
+    }
     if (host_keyboard_led_state().caps_lock) {
-        RGB_MATRIX_INDICATOR_SET_COLOR(44, 255, 255, 255);
+        RGB_MATRIX_INDICATOR_SET_COLOR(44, 90, 10, 255);
     } else {
         if (!rgb_matrix_get_flags()) {
             RGB_MATRIX_INDICATOR_SET_COLOR(44, 0, 0, 0);
         }
     }
-    if (keymap_config.no_gui) {
-        RGB_MATRIX_INDICATOR_SET_COLOR(75, 255, 255, 255);
-    } else {
-        if (!rgb_matrix_get_flags()) {
-            RGB_MATRIX_INDICATOR_SET_COLOR(75, 0, 0, 0);
-        }
-    }
-    return true;
+
+    // if (host_keyboard_led_state().caps_lock) {
+    //     RGB_MATRIX_INDICATOR_SET_COLOR(44, 255, 255, 255);
+    // } else {
+    //     if (!rgb_matrix_get_flags()) {
+    //         RGB_MATRIX_INDICATOR_SET_COLOR(44, 0, 0, 0);
+    //     }
+    // }
+    // if (keymap_config.no_gui) {
+    //     RGB_MATRIX_INDICATOR_SET_COLOR(75, 255, 255, 255);
+    // } else {
+    //     if (!rgb_matrix_get_flags()) {
+    //         RGB_MATRIX_INDICATOR_SET_COLOR(75, 0, 0, 0);
+    //     }
+    // }
+    return false;
 }
 #endif
 
 enum __layers {
     WIN_B,
-    WIN_W,
     WIN_FN,
-    MAC_B,
-    MAC_W,
-    MAC_FN
+    WIN_BL,
+    WIN_FN2
 };
 
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
@@ -185,11 +211,10 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
                 layer_state_set(1<<WIN_B);
             }
             return false;
-        case DF(MAC_B):
+        case DF(WIN_BL):
             if (record->event.pressed) {
-                set_single_persistent_default_layer(MAC_B);
-                layer_state_set(1<<MAC_B);
-                keymap_config.no_gui     = 0;
+                set_single_persistent_default_layer(WIN_BL);
+                layer_state_set(1<<WIN_BL);
                 eeconfig_update_keymap(keymap_config.raw);
             }
             return false;

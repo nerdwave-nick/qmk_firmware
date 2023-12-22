@@ -27,7 +27,7 @@
     },
     "diode_direction": "ROW2COL",
     "dynamic_keymap": {
-        "layer_count": 6
+        "layer_count": 4
     },
     "eeprom": {
         "driver": "wear_leveling",
@@ -46,23 +46,7 @@
         "max_brightness": 200,
         "val_steps": 20,
         "animations": {
-            "breathing": true,
-            "cycle_all": true,
-            "cycle_left_right": true,
-            "cycle_up_down": true,
-            "rainbow_moving_chevron": true,
-            "cycle_out_in": true,
-            "cycle_out_in_dual": true,
-            "cycle_pinwheel": true,
-            "cycle_spiral": true,
-            "dual_beacon": true,
-            "rainbow_beacon": true,
-            "raindrops": true,
-            "typing_heatmap": true,
-            "solid_reactive_simple": true,
-            "solid_reactive": true,
-            "solid_reactive_cross": true,
-            "multisplash": true
+            // "breathing": true
         },
         "layout":[
             { "flags": 4, "matrix": [0, 0],  "x":  0, "y": 0 },
@@ -166,7 +150,7 @@
             { "flags": 2, "x":0, "y":51},
             { "flags": 2, "x":0, "y":57},
             { "flags": 2, "x":0, "y":64},
-            
+
             { "flags": 2, "x":224, "y":0},
             { "flags": 2, "x":224, "y":6},
             { "flags": 2, "x":224, "y":13},
