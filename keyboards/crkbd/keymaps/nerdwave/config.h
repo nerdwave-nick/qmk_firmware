@@ -137,6 +137,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGB_MATRIX_LED_COUNT 54
 #    define RGB_MATRIX_SPLIT \
         { 27, 27 }
-#        define RGB_MATRIX_MAXIMUM_BRIGHTNESS 160
+#        define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
 #    define SPLIT_TRANSPORT_MIRROR
 #endif
