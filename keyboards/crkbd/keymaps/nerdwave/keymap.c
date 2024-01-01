@@ -21,16 +21,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LBASE] = LAYOUT_split_3x6_3(
        //,--------------------------------------------.                    ,--------------------------------------------.
-XXXXXXX,   KC_Q, KC_W,  KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, XXXXXXX,
+XXXXXXX,   KC_QUOT, KC_COMM,  KC_DOT,    KC_P,    KC_Y,                         KC_F,    KC_G,    KC_C,    KC_R,    KC_L, XXXXXXX,
        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-XXXXXXX, GUI_T(KC_A),   ALT_T(KC_S),    CTL_T(KC_D),   SFT_T(KC_F),    KC_G, /*#####*/ KC_H, SFT_T(KC_J),   CTL_T(KC_K),    ALT_T(KC_L),   GUI_T(KC_QUOT), XXXXXXX,
+XXXXXXX, GUI_T(KC_A),   ALT_T(KC_O),    CTL_T(KC_E),   SFT_T(KC_U),    KC_I, /*#####*/ KC_D, SFT_T(KC_H),   CTL_T(KC_T),    ALT_T(KC_N),   GUI_T(KC_S), XXXXXXX,
        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-XXXXXXX,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, XXXXXXX,
+XXXXXXX,   KC_SLSH,    KC_Q,    KC_J,    KC_K,    KC_X,                         KC_B,    KC_M, KC_W,  KC_V, KC_Z, XXXXXXX,
        //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
       LT(LMEDIA, KC_ESC), LT(LNAV, KC_SPC), LT(LMOUSE,KC_TAB),   LT(LSYM, KC_ENT), LT(LNUM, KC_BSPC), LT(LFN,KC_DEL)
                           //|-----------------------------|  |-----------------------------|
-
   ),
+//     [LBASE] = LAYOUT_split_3x6_3(
+//        //,--------------------------------------------.                    ,--------------------------------------------.
+// XXXXXXX,   KC_Q, KC_W,  KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, XXXXXXX,
+//        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
+// XXXXXXX, GUI_T(KC_A),   ALT_T(KC_S),    CTL_T(KC_D),   SFT_T(KC_F),    KC_G, /*#####*/ KC_H, SFT_T(KC_J),   CTL_T(KC_K),    ALT_T(KC_L),   GUI_T(KC_QUOT), XXXXXXX,
+//        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
+// XXXXXXX,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, XXXXXXX,
+//        //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+//       LT(LMEDIA, KC_ESC), LT(LNAV, KC_SPC), LT(LMOUSE,KC_TAB),   LT(LSYM, KC_ENT), LT(LNUM, KC_BSPC), LT(LFN,KC_DEL)
+//                           //|-----------------------------|  |-----------------------------|
+//   ), // QWERTY
+
     [LGAMING] = LAYOUT_split_3x6_3(
   //,--------------------------------------------.                    ,--------------------------------------------.
        XXXXXXX,   KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,                         KC_I, XXXXXXX, XXXXXXX, XXXXXXX, TO(LBASE),  XXXXXXX,
