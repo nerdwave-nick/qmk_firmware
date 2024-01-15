@@ -93,6 +93,7 @@ uint8_t get_bottom_hue(uint8_t index) {
 static bool yae_miko_breathe(effect_params_t* params) {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
     update_timer_and_hues();
+    os_variant_t os = detected_host_os();
     uint16_t time = scale16by8(g_rgb_timer, rgb_matrix_config.speed / 8);
     uint8_t pulseDepthModifier = rgb_matrix_config.hsv.s;
     uint8_t v = rgb_matrix_config.hsv.v;
@@ -101,12 +102,15 @@ static bool yae_miko_breathe(effect_params_t* params) {
     RGB color;
     uint8_t index;
     for (uint8_t i = led_min; i < led_max; i++) {
+        int hue = os != OS_MACOS ? 255 : i*15;
+        if (hue > 255) hue = 255;
+
         RGB_MATRIX_TEST_LED_FLAGS();
         index = i >= HALF_OFFSET ? i : i + HALF_OFFSET;
         if (isBacklight(i)) {
             color = rgb_matrix_hsv_to_rgb((HSV){get_bottom_hue(index-HALF_OFFSET), 255, breath_v});
         } else {
-            color = rgb_matrix_hsv_to_rgb((HSV){5*index, 255, breath_v});
+            color = rgb_matrix_hsv_to_rgb((HSV){5*index, hue, breath_v});
         }
         rgb_matrix_set_color(i, color.r, color.g, color.b);
     }

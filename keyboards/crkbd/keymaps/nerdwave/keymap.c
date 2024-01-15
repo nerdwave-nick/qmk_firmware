@@ -156,12 +156,12 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
          case SFT_T(KC_H):
          case KC_RSFT:
          case KC_LSFT:
-        case LT(LMEDIA, KC_ESC):
-        case LT(LNAV, KC_SPC):
-        case LT(LMOUSE,KC_TAB):
-        case LT(LSYM, KC_ENT):
-        case LT(LNUM, KC_BSPC):
-        case LT(LFN,KC_DEL):
+        // case LT(LMEDIA, KC_ESC):
+        // case LT(LNAV, KC_SPC):
+        // case LT(LMOUSE,KC_TAB):
+        // case LT(LSYM, KC_ENT):
+        // case LT(LNUM, KC_BSPC):
+        // case LT(LFN,KC_DEL):
             return 150;
         default:
             return TAPPING_TERM;

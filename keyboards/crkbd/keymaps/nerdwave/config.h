@@ -58,6 +58,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #   define SPLIT_LED_STATE_ENABLE
 #   define SPLIT_MODS_ENABLE
 #   define SPLIT_OLED_ENABLE
+#   define SPLIT_DETECTED_OS_ENABLE
 
 #undef TAPPING_TERM
 #define TAPPING_TERM 250
