@@ -18,23 +18,42 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "./nerdwave.h"
 
+// Left-hand home row mods
+#define HOME_A LGUI_T(KC_A)
+#define HOME_O LALT_T(KC_O)
+#define HOME_E LCTL_T(KC_E)
+#define HOME_U LSFT_T(KC_U)
+
+// Right-hand home row mods
+#define HOME_H RSFT_T(KC_H)
+#define HOME_T RCTL_T(KC_T)
+#define HOME_N LALT_T(KC_N)
+#define HOME_S RGUI_T(KC_S)
+
+#define MED_ESC LT(LMEDIA, KC_ESC)
+#define NAV_SPC LT(LNAV, KC_SPC)
+#define MOUSE_TAB LT(LMOUSE, KC_TAB)
+#define SYM_ENT LT(LSYM, KC_ENT)
+#define NUM_BSP LT(LNUM, KC_BSPC)
+#define FN_DEL LT(LFN, KC_DEL)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LBASE] = LAYOUT_split_3x6_3(
        //,--------------------------------------------.                    ,--------------------------------------------.
 XXXXXXX,   KC_QUOT, KC_COMM,  KC_DOT,    KC_P,    KC_Y,                         KC_F,    KC_G,    KC_C,    KC_R,    KC_L, XXXXXXX,
        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-XXXXXXX, GUI_T(KC_A),   ALT_T(KC_O),    CTL_T(KC_E),   SFT_T(KC_U),    KC_I, /*#####*/ KC_D, SFT_T(KC_H),   CTL_T(KC_T),    ALT_T(KC_N),   GUI_T(KC_S), XXXXXXX,
+XXXXXXX,    HOME_A,  HOME_O,  HOME_E,   HOME_U,   KC_I,     /*#####*/           KC_D,  HOME_H,  HOME_T,  HOME_N,  HOME_S, XXXXXXX,
        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-XXXXXXX,   KC_SLSH,    KC_Q,    KC_J,    KC_K,    KC_X,                         KC_B,    KC_M, KC_W,  KC_V, KC_Z, XXXXXXX,
+XXXXXXX,   KC_SLSH,    KC_Q,    KC_J,    KC_K,    KC_X,                         KC_B,    KC_M,    KC_W,    KC_V,    KC_Z, XXXXXXX,
        //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-      LT(LMEDIA, KC_ESC), LT(LNAV, KC_SPC), LT(LMOUSE,KC_TAB),   LT(LSYM, KC_ENT), LT(LNUM, KC_BSPC), LT(LFN,KC_DEL)
+                             MED_ESC, NAV_SPC,MOUSE_TAB,                     SYM_ENT, NUM_BSP,  FN_DEL
                           //|-----------------------------|  |-----------------------------|
   ),
 //     [LBASE] = LAYOUT_split_3x6_3(
 //        //,--------------------------------------------.                    ,--------------------------------------------.
 // XXXXXXX,   KC_Q, KC_W,  KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, XXXXXXX,
 //        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-// XXXXXXX, GUI_T(KC_A),   ALT_T(KC_S),    CTL_T(KC_D),   SFT_T(KC_F),    KC_G, /*#####*/ KC_H, SFT_T(KC_J),   CTL_T(KC_K),    ALT_T(KC_L),   GUI_T(KC_QUOT), XXXXXXX,
+// XXXXXXX, HOME_A   ALT_T(KC_S),    CTL_T(KC_D),   SFT_T(KC_F),    KC_G, /*#####*/ KC_H, SFT_T(KC_J),   CTL_T(KC_K),    ALT_T(KC_L),   GUI_T(KC_QUOT), XXXXXXX,
 //        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
 // XXXXXXX,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, XXXXXXX,
 //        //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
@@ -56,7 +75,7 @@ XXXXXXX,   KC_SLSH,    KC_Q,    KC_J,    KC_K,    KC_X,                         
 
     [LNAV] = LAYOUT_split_3x6_3(
   //,--------------------------------------------.                    ,--------------------------------------------.
-     XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   C(S(KC_Z)), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),  XXXXXXX,
+     XXXXXXX,    C(KC_X), C(KC_C), C(KC_V),XXXXXXX, XXXXXXX,                   C(S(KC_Z)), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),  XXXXXXX,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
   XXXXXXX,       KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                      KC_CAPS, KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT,  XXXXXXX,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
@@ -68,7 +87,7 @@ XXXXXXX,   KC_SLSH,    KC_Q,    KC_J,    KC_K,    KC_X,                         
 
     [LMOUSE] = LAYOUT_split_3x6_3(
   //,--------------------------------------------.                    ,--------------------------------------------.
-      XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   C(S(KC_Z)), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),  XXXXXXX,
+       XXXXXXX,    C(KC_X), C(KC_C), C(KC_V),XXXXXXX, XXXXXXX,                    C(S(KC_Z)), C(KC_V), C(KC_C), C(KC_X), C(KC_Z),  XXXXXXX,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
      XXXXXXX,    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                      XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,  XXXXXXX,
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
@@ -122,7 +141,7 @@ XXXXXXX,   KC_SLSH,    KC_Q,    KC_J,    KC_K,    KC_X,                         
   //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
         XXXXXXX,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                  KC_APP,KC_SPACE,  KC_TAB,    _______, XXXXXXX, XXXXXXX
+                                  KC_APP,KC_SPACE,  KC_TAB,    XXXXXXX, XXXXXXX, _______
   //                           '--------------------------'  '--------------------------'
   )
 };
@@ -149,21 +168,37 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+// uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+//     return TAPPING_TERM;
+//     // switch (keycode) {
+//     //     // shift and layers are short
+//     //      case SFT_T(KC_U):
+//     //      case SFT_T(KC_H):
+//     //      case KC_RSFT:
+//     //      case KC_LSFT:
+//     //     // case LT(LMEDIA, KC_ESC):
+//     //     // case LT(LNAV, KC_SPC):
+//     //     // case LT(LMOUSE,KC_TAB):
+//     //     // case LT(LSYM, KC_ENT):
+//     //     // case LT(LNUM, KC_BSPC):
+//     //     // case LT(LFN,KC_DEL):
+//     //         return 120;
+//     //     default:
+//     //         return TAPPING_TERM;
+//     // }
+// }
+
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        // shift and layers are short
-         case SFT_T(KC_U):
-         case SFT_T(KC_H):
-         case KC_RSFT:
-         case KC_LSFT:
-        // case LT(LMEDIA, KC_ESC):
-        // case LT(LNAV, KC_SPC):
-        // case LT(LMOUSE,KC_TAB):
-        // case LT(LSYM, KC_ENT):
-        // case LT(LNUM, KC_BSPC):
-        // case LT(LFN,KC_DEL):
-            return 150;
+        case HOME_A:
+        case HOME_O:
+        case HOME_E:
+        case HOME_T:
+        case HOME_N:
+        case HOME_S:
+            return false;
         default:
-            return TAPPING_TERM;
+            // Do not select the hold action when another key is tapped.
+            return true;
     }
 }

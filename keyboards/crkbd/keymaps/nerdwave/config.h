@@ -22,51 +22,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_MATRIX_I2C
 
-/* Select hand configuration */
-
 #define MASTER_LEFT
-// #define MASTER_RIGHT
-// #define EE_HANDS
-// #define EE_HANDS
-// #define SPLIT_USB_DETECT
-
-
-// #ifdef RGBLIGHT_ENABLE
-//     #define RGBLIGHT_EFFECT_BREATHING
-//     #define RGBLIGHT_EFFECT_RAINBOW_MOOD
-//     #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-//     #define RGBLIGHT_EFFECT_SNAKE
-//     #define RGBLIGHT_EFFECT_KNIGHT
-//     #define RGBLIGHT_EFFECT_CHRISTMAS
-//     #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-//     #define RGBLIGHT_EFFECT_RGB_TEST
-//     #define RGBLIGHT_EFFECT_ALTERNATING
-//     #define RGBLIGHT_EFFECT_TWINKLE
-//     #define RGBLIGHT_LIMIT_VAL 120
-//     #define RGBLIGHT_HUE_STEP 10
-//     #define RGBLIGHT_SAT_STEP 17
-//     #define RGBLIGHT_VAL_STEP 17
-// #endif
 
 #ifdef OLED_ENABLE
     #define OLED_TIMEOUT 600000
     #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 #endif
+
 #define SPLIT_LAYER_STATE_ENABLE
 #define SPLIT_WPM_ENABLE
-#   define SPLIT_LAYER_STATE_ENABLE
-#   define SPLIT_LED_STATE_ENABLE
-#   define SPLIT_MODS_ENABLE
-#   define SPLIT_OLED_ENABLE
-#   define SPLIT_DETECTED_OS_ENABLE
-
-#undef TAPPING_TERM
-#define TAPPING_TERM 250
-#define QUICK_TAP_TERM 120
-#define QUICK_TAP_TERM_PER_KEY
-#define TAPPING_TERM_PER_KEY
-// Prevent normal rollover on alphas from accidentally triggering mods.
-// #define IGNORE_MOD_TAP_INTERRUPT
+#define SPLIT_MODS_ENABLE
+#define SPLIT_LED_STATE_ENABLE
+#define SPLIT_OLED_ENABLE
+#define SPLIT_DETECTED_OS_ENABLE
 
 #define NO_ACTION_ONESHOT
 #undef LOCKING_SUPPORT_ENABLE
@@ -141,3 +109,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #        define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
 #    define SPLIT_TRANSPORT_MIRROR
 #endif
+
+#undef TAPPING_TERM
+#define TAPPING_TERM 200
+#define QUICK_TAP_TERM 100
+#define QUICK_TAP_TERM_PER_KEY
+#define PERMISSIVE_HOLD
+#define PERMISSIVE_HOLD_PER_KEY
