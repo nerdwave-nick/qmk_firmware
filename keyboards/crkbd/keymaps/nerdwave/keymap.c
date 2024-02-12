@@ -17,7 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "./nerdwave.h"
-
 // Left-hand home row mods
 #define HOME_A LGUI_T(KC_A)
 #define HOME_O LALT_T(KC_O)
@@ -144,39 +143,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case LT(LMEDIA, KC_ESC):
-        case LT(LNAV, KC_SPC):
-        case LT(LMOUSE,KC_TAB):
-        case LT(LSYM, KC_ENT):
-        case LT(LNUM, KC_BSPC):
-        case LT(LFN,KC_DEL):
-            return 0;
-        default:
-            return QUICK_TAP_TERM;
-    }
+switch (keycode) {
+case LT(LMEDIA, KC_ESC):
+case LT(LNAV, KC_SPC):
+case LT(LMOUSE,KC_TAB):
+case LT(LSYM, KC_ENT):
+case LT(LNUM, KC_BSPC):
+case LT(LFN,KC_DEL):
+return 0;
+default:
+return QUICK_TAP_TERM;
+}
 }
 
 #ifdef RGB_MATRIX_ENABLE
 void keyboard_post_init_user(void) {
-    rgblight_enable_noeeprom(); // enables Rgb, without saving settings
-    rgblight_sethsv_noeeprom(0, 150, 255);
-    rgblight_set_speed_noeeprom(70); // sets speed to 255
-    rgblight_mode_noeeprom(2); // sets mode to Fast breathing without saving
+rgblight_enable_noeeprom(); // enables Rgb, without saving settings
+rgblight_sethsv_noeeprom(0, 150, 255);
+rgblight_set_speed_noeeprom(70); // sets speed to 255
+rgblight_mode_noeeprom(2); // sets mode to Fast breathing without saving
 }
 #endif
 
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case HOME_A:
-        case HOME_O:
-        case HOME_E:
-        case HOME_T:
-        case HOME_N:
-        case HOME_S:
-            return false;
-        default:
-            // Do not select the hold action when another key is tapped.
-            return true;
-    }
+switch (keycode) {
+case HOME_A:
+case HOME_O:
+case HOME_E:
+case HOME_T:
+case HOME_N:
+case HOME_S:
+return false;
+default:
+// Do not select the hold action when another key is tapped.
+return true;
+}
 }

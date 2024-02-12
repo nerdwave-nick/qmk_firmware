@@ -6,9 +6,7 @@
 #include "quantum.h"
 #include "progmem.h"
 #include "split_util.h"
-#if defined(RGB_MATRIX_ENABLE)
-#    include "rgb.h"
-#endif
+
 
 #if defined(OLED_ENABLE)
 #    include "wpm.h"

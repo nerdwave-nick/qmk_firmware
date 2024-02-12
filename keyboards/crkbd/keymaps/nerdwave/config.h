@@ -34,7 +34,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SPLIT_MODS_ENABLE
 #define SPLIT_LED_STATE_ENABLE
 #define SPLIT_OLED_ENABLE
-#define SPLIT_DETECTED_OS_ENABLE
 
 #define NO_ACTION_ONESHOT
 #undef LOCKING_SUPPORT_ENABLE
@@ -42,7 +41,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define NO_MUSIC_MODE
 #define LAYER_STATE_8BIT
 
-#undef RGBLIGHT_ANIMATIONS
+// #undef RGBLIGHT_ANIMATIONS
 #undef RGBLIGHT_EFFECT_BREATHINGsrs
 #undef RGBLIGHT_EFFECT_RAINBOW_MOOD
 #undef RGBLIGHT_EFFECT_RAINBOW_SWIRL
@@ -106,14 +105,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGB_MATRIX_LED_COUNT 54
 #    define RGB_MATRIX_SPLIT \
         { 27, 27 }
-#        define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
+#    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
 #    define SPLIT_TRANSPORT_MIRROR
-#    define RGBLIGHT_SLEEP
+// #    define RGB_MATRIX_TIMEOUT 600000
 #endif
 
-#undef TAPPING_TERM
 #define TAPPING_TERM 200
 #define QUICK_TAP_TERM 100
 #define QUICK_TAP_TERM_PER_KEY
 #define PERMISSIVE_HOLD
 #define PERMISSIVE_HOLD_PER_KEY
+
+

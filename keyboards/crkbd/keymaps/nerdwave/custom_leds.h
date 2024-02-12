@@ -18,43 +18,43 @@ RGB_MATRIX_EFFECT(yae_miko_breathe)
 int get_breath_v(uint8_t time, uint8_t pulseDepthModifier, uint8_t preScaledV) {
  uint8_t pulse_mult, pulse_div, pulse_add;
 
-    // if (pulseDepthModifier > 225) {
-    //     pulse_mult = 2;
-    //     pulse_div = 1;
-    //     pulse_add = 0;
-    // } else if (pulseDepthModifier > 200) {
-    //     pulse_add = 32;
-    //     pulse_mult = 7;
-    //     pulse_div = 4;
-    // } else if (pulseDepthModifier > 175) {
-    //     pulse_add = 64;
-    //     pulse_mult = 3;
-    //     pulse_div = 2;
-    // } else if (pulseDepthModifier > 150) {
+    if (pulseDepthModifier > 225) {
+            pulse_mult = 2;
+            pulse_div = 1;
+            pulse_add = 0;
+    } else if (pulseDepthModifier > 200) {
+            pulse_add = 32;
+            pulse_mult = 7;
+            pulse_div = 4;
+    } else if (pulseDepthModifier > 175) {
+            pulse_add = 64;
+            pulse_mult = 3;
+            pulse_div = 2;
+    } else if (pulseDepthModifier > 150) {
         pulse_add = 96;
         pulse_mult = 5;
         pulse_div = 4;
-    // } else if (pulseDepthModifier > 125) {
-    //     pulse_add = 128;
-    //     pulse_mult = 1;
-    //     pulse_div = 1;
-    // } else if (pulseDepthModifier > 100) {
-    //     pulse_add = 160;
-    //     pulse_mult = 3;
-    //     pulse_div = 4;
-    // } else if (pulseDepthModifier > 75) {
-    //     pulse_add = 192;
-    //     pulse_mult = 1;
-    //     pulse_div = 2;
-    // } else if (pulseDepthModifier > 50) {
-    //     pulse_add = 224;
-    //     pulse_mult = 1;
-    //     pulse_div = 4;
-    // } else {
-    //     pulse_mult = 0;
-    //     pulse_div = 0;
-    //     pulse_add = 255;
-    // }
+    } else if (pulseDepthModifier > 125) {
+            pulse_add = 128;
+            pulse_mult = 1;
+            pulse_div = 1;
+    } else if (pulseDepthModifier > 100) {
+            pulse_add = 160;
+            pulse_mult = 3;
+            pulse_div = 4;
+    } else if (pulseDepthModifier > 75) {
+            pulse_add = 192;
+            pulse_mult = 1;
+            pulse_div = 2;
+    } else if (pulseDepthModifier > 50) {
+            pulse_add = 224;
+            pulse_mult = 1;
+            pulse_div = 4;
+    } else {
+            pulse_mult = 0;
+            pulse_div = 0;
+            pulse_add = 255;
+    }
 
     return scale8(abs8(sin8(time) - 128) * pulse_mult / pulse_div + pulse_add, preScaledV);
 }
@@ -93,7 +93,7 @@ uint8_t get_bottom_hue(uint8_t index) {
 static bool yae_miko_breathe(effect_params_t* params) {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
     update_timer_and_hues();
-    os_variant_t os = detected_host_os();
+    // os_variant_t os = detected_host_os();
     uint16_t time = scale16by8(g_rgb_timer, rgb_matrix_config.speed / 8);
     uint8_t pulseDepthModifier = rgb_matrix_config.hsv.s;
     uint8_t v = rgb_matrix_config.hsv.v;
@@ -102,15 +102,15 @@ static bool yae_miko_breathe(effect_params_t* params) {
     RGB color;
     uint8_t index;
     for (uint8_t i = led_min; i < led_max; i++) {
-        int hue = os != OS_MACOS ? 255 : i*15;
-        if (hue > 255) hue = 255;
+        // int hue = os != OS_MACOS ? 255 : i*15;
+        // if (hue > 255) hue = 255;
 
         RGB_MATRIX_TEST_LED_FLAGS();
         index = i >= HALF_OFFSET ? i : i + HALF_OFFSET;
         if (isBacklight(i)) {
             color = rgb_matrix_hsv_to_rgb((HSV){get_bottom_hue(index-HALF_OFFSET), 255, breath_v});
         } else {
-            color = rgb_matrix_hsv_to_rgb((HSV){5*index, hue, breath_v});
+            color = rgb_matrix_hsv_to_rgb((HSV){5*index, 255, breath_v});
         }
         rgb_matrix_set_color(i, color.r, color.g, color.b);
     }
