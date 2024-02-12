@@ -108,6 +108,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         { 27, 27 }
 #        define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150
 #    define SPLIT_TRANSPORT_MIRROR
+#    define RGBLIGHT_SLEEP
 #endif
 
 #undef TAPPING_TERM

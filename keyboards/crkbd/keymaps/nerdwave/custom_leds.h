@@ -18,43 +18,43 @@ RGB_MATRIX_EFFECT(yae_miko_breathe)
 int get_breath_v(uint8_t time, uint8_t pulseDepthModifier, uint8_t preScaledV) {
  uint8_t pulse_mult, pulse_div, pulse_add;
 
-    if (pulseDepthModifier > 225) {
-        pulse_mult = 2;
-        pulse_div = 1;
-        pulse_add = 0;
-    } else if (pulseDepthModifier > 200) {
-        pulse_add = 32;
-        pulse_mult = 7;
-        pulse_div = 4;
-    } else if (pulseDepthModifier > 175) {
-        pulse_add = 64;
-        pulse_mult = 3;
-        pulse_div = 2;
-    } else if (pulseDepthModifier > 150) {
+    // if (pulseDepthModifier > 225) {
+    //     pulse_mult = 2;
+    //     pulse_div = 1;
+    //     pulse_add = 0;
+    // } else if (pulseDepthModifier > 200) {
+    //     pulse_add = 32;
+    //     pulse_mult = 7;
+    //     pulse_div = 4;
+    // } else if (pulseDepthModifier > 175) {
+    //     pulse_add = 64;
+    //     pulse_mult = 3;
+    //     pulse_div = 2;
+    // } else if (pulseDepthModifier > 150) {
         pulse_add = 96;
         pulse_mult = 5;
         pulse_div = 4;
-    } else if (pulseDepthModifier > 125) {
-        pulse_add = 128;
-        pulse_mult = 1;
-        pulse_div = 1;
-    } else if (pulseDepthModifier > 100) {
-        pulse_add = 160;
-        pulse_mult = 3;
-        pulse_div = 4;
-    } else if (pulseDepthModifier > 75) {
-        pulse_add = 192;
-        pulse_mult = 1;
-        pulse_div = 2;
-    } else if (pulseDepthModifier > 50) {
-        pulse_add = 224;
-        pulse_mult = 1;
-        pulse_div = 4;
-    } else {
-        pulse_mult = 0;
-        pulse_div = 0;
-        pulse_add = 255;
-    }
+    // } else if (pulseDepthModifier > 125) {
+    //     pulse_add = 128;
+    //     pulse_mult = 1;
+    //     pulse_div = 1;
+    // } else if (pulseDepthModifier > 100) {
+    //     pulse_add = 160;
+    //     pulse_mult = 3;
+    //     pulse_div = 4;
+    // } else if (pulseDepthModifier > 75) {
+    //     pulse_add = 192;
+    //     pulse_mult = 1;
+    //     pulse_div = 2;
+    // } else if (pulseDepthModifier > 50) {
+    //     pulse_add = 224;
+    //     pulse_mult = 1;
+    //     pulse_div = 4;
+    // } else {
+    //     pulse_mult = 0;
+    //     pulse_div = 0;
+    //     pulse_add = 255;
+    // }
 
     return scale8(abs8(sin8(time) - 128) * pulse_mult / pulse_div + pulse_add, preScaledV);
 }

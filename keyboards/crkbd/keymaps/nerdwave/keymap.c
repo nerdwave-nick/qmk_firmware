@@ -47,30 +47,19 @@ XXXXXXX,    HOME_A,  HOME_O,  HOME_E,   HOME_U,   KC_I,     /*#####*/           
 XXXXXXX,   KC_SLSH,    KC_Q,    KC_J,    KC_K,    KC_X,                         KC_B,    KC_M,    KC_W,    KC_V,    KC_Z, XXXXXXX,
        //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
                              MED_ESC, NAV_SPC,MOUSE_TAB,                     SYM_ENT, NUM_BSP,  FN_DEL
-                          //|-----------------------------|  |-----------------------------|
+                          //|----------------------------------|  |-----------------------------|
   ),
-//     [LBASE] = LAYOUT_split_3x6_3(
-//        //,--------------------------------------------.                    ,--------------------------------------------.
-// XXXXXXX,   KC_Q, KC_W,  KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, XXXXXXX,
-//        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-// XXXXXXX, HOME_A   ALT_T(KC_S),    CTL_T(KC_D),   SFT_T(KC_F),    KC_G, /*#####*/ KC_H, SFT_T(KC_J),   CTL_T(KC_K),    ALT_T(KC_L),   GUI_T(KC_QUOT), XXXXXXX,
-//        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-// XXXXXXX,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, XXXXXXX,
-//        //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-//       LT(LMEDIA, KC_ESC), LT(LNAV, KC_SPC), LT(LMOUSE,KC_TAB),   LT(LSYM, KC_ENT), LT(LNUM, KC_BSPC), LT(LFN,KC_DEL)
-//                           //|-----------------------------|  |-----------------------------|
-//   ), // QWERTY
 
     [LGAMING] = LAYOUT_split_3x6_3(
-  //,--------------------------------------------.                    ,--------------------------------------------.
-       XXXXXXX,   KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,                         KC_I, XXXXXXX, XXXXXXX, XXXXXXX, TO(LBASE),  XXXXXXX,
-  //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-     XXXXXXX,    KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,                         KC_L, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
-  //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
-      XXXXXXX,   KC_LCTL,    KC_1,    KC_2,    KC_3,    KC_4,                         KC_M, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
-  //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
-                                 KC_LALT,KC_SPACE,  KC_V,        KC_F4,   KC_F5, KC_ESC
-  //                           '--------------------------'  '--------------------------'
+        //,--------------------------------------------.                    ,--------------------------------------------.
+XXXXXXX,     KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,                         KC_I, XXXXXXX, XXXXXXX, XXXXXXX,TO(LBASE),  XXXXXXX,
+        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
+XXXXXXX,    KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,                         KC_L, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
+        //|--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------|
+XXXXXXX,    KC_LCTL,    KC_1,    KC_2,    KC_3,    KC_4,                         KC_M, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
+        //|--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------|
+                              KC_LALT,KC_SPACE,    KC_V,                        KC_F4,   KC_F5,  KC_ESC
+  //                           |--------------------------------|  |--------------------------'
   ),
 
     [LNAV] = LAYOUT_split_3x6_3(
@@ -168,25 +157,14 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-// uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-//     return TAPPING_TERM;
-//     // switch (keycode) {
-//     //     // shift and layers are short
-//     //      case SFT_T(KC_U):
-//     //      case SFT_T(KC_H):
-//     //      case KC_RSFT:
-//     //      case KC_LSFT:
-//     //     // case LT(LMEDIA, KC_ESC):
-//     //     // case LT(LNAV, KC_SPC):
-//     //     // case LT(LMOUSE,KC_TAB):
-//     //     // case LT(LSYM, KC_ENT):
-//     //     // case LT(LNUM, KC_BSPC):
-//     //     // case LT(LFN,KC_DEL):
-//     //         return 120;
-//     //     default:
-//     //         return TAPPING_TERM;
-//     // }
-// }
+#ifdef RGB_MATRIX_ENABLE
+void keyboard_post_init_user(void) {
+    rgblight_enable_noeeprom(); // enables Rgb, without saving settings
+    rgblight_sethsv_noeeprom(0, 150, 255);
+    rgblight_set_speed_noeeprom(70); // sets speed to 255
+    rgblight_mode_noeeprom(2); // sets mode to Fast breathing without saving
+}
+#endif
 
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
